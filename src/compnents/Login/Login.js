@@ -9,22 +9,17 @@ const Login = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    loginuser(email, password)
-      .then((res) => res.json())
-      .then((data) => console.log(data));
+    loginuser(email, password).then((result) => {
+      const user = result.user;
+      console.log(user);
+    });
     console.log(email, password);
   };
   return (
     <div>
-      <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex-row">
-          <div className="text-center border rounded-lg bg-slate-200 p-10 lg:text-left">
-            <p className="py-6 font-semibold text-4xl">
-              If you want to use our service, <br /> then log in and you don't
-              have an account, Please Register
-            </p>
-            <img src={login} alt="" />
-          </div>
+      <div className="hero min-h-screen bg-base-200 w-full bg-[url('https://images.pexels.com/photos/1130436/pexels-photo-1130436.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] ">
+        <div className="hero-content ">
+          <div className="text-center rounded-lg  p-10 lg:text-left"></div>
           <div className="card p-10 flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <h1 className="text-4xl font-bold">Login now!</h1>
             <form onSubmit={loginhandle}>

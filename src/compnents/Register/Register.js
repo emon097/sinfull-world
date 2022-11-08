@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../Authprovider/Authprovider";
 import login from "../media/undraw_modern_design_re_dlp8.svg";
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateall } = useContext(AuthContext);
   const handlelogin = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -12,24 +12,21 @@ const Register = () => {
     const photo = form.photo.value;
     const password = form.password.value;
     createUser(email, password)
-      .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        updateall(name, photo)
+          .then(() => {})
+          .catch((err) => console.log(err));
+      })
       .catch((err) => {
         console.error(err.message);
       });
-    console.log(name, email, photo, password);
   };
   return (
     <div>
-      <div className="hero min-h-screen bg-base-200">
+      <div className="hero p-10 min-h-screen bg-base-200 bg-[url('https://images.pexels.com/photos/10388108/pexels-photo-10388108.jpeg?auto=compress&cs=tinysrgb&w=1600')]  ">
         <div className="hero-content flex-col lg:flex-row">
-          <div className="text-center border rounded-lg bg-slate-100 p-10 lg:text-left">
-            <p className="py-6 font-semibold text-4xl">
-              If you want to use our service, <br /> then Register and you have
-              an Already Account, <br /> You Can Login Your Account
-            </p>
-            <img src={login} alt="" />
-          </div>
           <div className="card p-10 flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <h1 className="text-4xl font-bold">Login now!</h1>
             <form onSubmit={handlelogin}>

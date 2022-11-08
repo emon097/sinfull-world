@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Authprovider/Authprovider";
 
 const Nav = () => {
+  const { user, logout } = useContext(AuthContext);
+  const handlelogout = () => {
+    logout()
+      .then(() => {})
+      .catch((err) => console.log(err));
+  };
   return (
     <div>
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-black text-white p-5">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -35,12 +42,12 @@ const Nav = () => {
                 <Link to="/myreview"> My Review </Link>
               </li>
               <li>
-                <Link to="/blogs"> Blogs </Link>
+                <Link to="/blogs"> {user?.displayName} </Link>
               </li>
             </ul>
           </div>
-          <Link to="/" className="btn btn-ghost normal-case text-3xl">
-            Sinfull World
+          <Link to="/" className=" font-mono normal-case text-3xl">
+            SINFULL WORLD
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
@@ -55,14 +62,20 @@ const Nav = () => {
               <Link to="/myreview"> My Review </Link>
             </li>
             <li>
-              <Link to="/blogs"> Blogs </Link>
+              <Link to="/blogs"> {user?.displayName} </Link>
             </li>
           </ul>
         </div>
         <div className="navbar-end md:mr-8">
-          <Link to="/login" className="btn btn-success text-white ">
-            Login
-          </Link>
+          {user?.uid ? (
+            <Link onClick={handlelogout} className="btn btn-error text-white ">
+              LogOut
+            </Link>
+          ) : (
+            <Link to="/login" className="btn btn-success text-white ">
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </div>
