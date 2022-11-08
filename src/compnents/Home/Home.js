@@ -8,7 +8,7 @@ const Home = () => {
         <div className="my-32 mx-32">
           <h1 className="text-5xl underline font-serif font-bold">
             {" "}
-            Wild Life Photography
+            Nature And Wild Photography
           </h1>
           <p className="mt-8 text-3xl">
             “We don’t own the planet Earth, we belong to it. And we must share
