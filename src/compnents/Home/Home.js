@@ -1,5 +1,6 @@
 import React from "react";
 import Carusel from "../Page/Carusel";
+import Recent from "../Recent/Recent";
 
 const Home = () => {
   return (
@@ -19,6 +20,9 @@ const Home = () => {
         <div>
           <Carusel></Carusel>
         </div>
+      </div>
+      <div>
+        <Recent></Recent>
       </div>
     </div>
   );
