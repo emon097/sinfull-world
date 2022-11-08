@@ -7,6 +7,7 @@ import Blogs from "./compnents/Navpage/Blogs";
 import Addservice from "./compnents/Navpage/Addservice";
 import Login from "./compnents/Login/Login";
 import Register from "./compnents/Register/Register";
+import Home from "./compnents/Home/Home";
 
 function App() {
   const router = createBrowserRouter([
@@ -14,6 +15,10 @@ function App() {
       path: "/",
       element: <Main></Main>,
       children: [
+        {
+          path: "/",
+          element: <Home></Home>,
+        },
         {
           path: "/myreview",
           element: <Myreview></Myreview>,
