@@ -9,6 +9,7 @@ import Login from "./compnents/Login/Login";
 import Register from "./compnents/Register/Register";
 import Home from "./compnents/Home/Home";
 import SeeAll from "./compnents/Share/SeeAll";
+import ServiceDetails from "./compnents/Share/ServiceDetails";
 
 function App() {
   const router = createBrowserRouter([
@@ -43,6 +44,10 @@ function App() {
         {
           path: "/service",
           element: <SeeAll></SeeAll>,
+        },
+        {
+          path: "/service/:id",
+          element: <ServiceDetails></ServiceDetails>,
         },
       ],
     },
