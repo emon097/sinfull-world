@@ -4,7 +4,6 @@ import Service from "./Service";
 
 const ServicePage = () => {
   const [desplayCategory, setDesplayCategory] = useState([]);
-
   fetch("http://localhost:5000/addService")
     .then((res) => res.json())
     .then((data) => setDesplayCategory(data));
@@ -21,7 +20,9 @@ const ServicePage = () => {
         ))}
       </div>
       <div className="flex justify-center">
-        <Link className="btn btn-success text-white">Add Service</Link>
+        <Link to="/service" className="btn btn-success text-white">
+          SeeAll
+        </Link>
       </div>
     </div>
   );

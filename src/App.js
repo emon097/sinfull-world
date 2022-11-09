@@ -47,6 +47,8 @@ function App() {
         },
         {
           path: "/service/:id",
+          loader: ({ params }) =>
+            fetch(`http://localhost:5000/service/${params.id}`),
           element: <ServiceDetails></ServiceDetails>,
         },
       ],
