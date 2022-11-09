@@ -8,6 +8,7 @@ import Addservice from "./compnents/Navpage/Addservice";
 import Login from "./compnents/Login/Login";
 import Register from "./compnents/Register/Register";
 import Home from "./compnents/Home/Home";
+import SeeAll from "./compnents/Share/SeeAll";
 
 function App() {
   const router = createBrowserRouter([
@@ -38,6 +39,10 @@ function App() {
         {
           path: "/register",
           element: <Register></Register>,
+        },
+        {
+          path: "/service",
+          element: <SeeAll></SeeAll>,
         },
       ],
     },
