@@ -1,3 +1,4 @@
+import { fromJSON } from "postcss";
 import React, { useContext } from "react";
 
 const Addservice = () => {
@@ -8,10 +9,21 @@ const Addservice = () => {
     const image = form.image.value;
     const price = form.price.value;
     const details = form.details.value;
-    const allDetails = { title, image, price, details };
-    console.log(allDetails);
-  };
 
+    const allDetails = { title, image, price, details };
+    fetch("http://localhost:5000/addService", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(allDetails),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        form.reset();
+        console.log(data);
+      });
+  };
   return (
     <div className="flex justify-center w-full bg-repeat-round bg-[url('https://images.pexels.com/photos/8956431/pexels-photo-8956431.jpeg?auto=compress&cs=tinysrgb&w=1600')] ">
       <form
@@ -57,7 +69,6 @@ const Addservice = () => {
               name="image"
             />
           </div>
-
           <div class="w-full mt-5 md:w-1/3 px-3 mb-6 md:mb-0">
             <label
               class="block uppercase tracking-wide text-white text-xs font-bold mb-2"

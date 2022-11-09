@@ -1,5 +1,6 @@
 import React from "react";
 import Carusel from "../Page/Carusel";
+import ServicePage from "../Page/ServicePage";
 import Recent from "../Recent/Recent";
 
 const Home = () => {
@@ -20,6 +21,9 @@ const Home = () => {
         <div>
           <Carusel></Carusel>
         </div>
+      </div>
+      <div>
+        <ServicePage></ServicePage>
       </div>
       <div>
         <Recent></Recent>
