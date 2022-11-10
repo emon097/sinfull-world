@@ -4,6 +4,7 @@ import {
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
   updateProfile,
 } from "firebase/auth";
@@ -14,6 +15,7 @@ const auth = getAuth(app);
 const Authprovider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
@@ -32,6 +34,10 @@ const Authprovider = ({ children }) => {
     };
   }, []);
 
+  const crateaccountgoogle = () => {
+    return signInWithPopup(auth);
+  };
+
   const updateall = (name, photo) => {
     return updateProfile(auth.currentUser, {
       displayName: name,
@@ -42,7 +48,14 @@ const Authprovider = ({ children }) => {
     return signOut(auth);
   };
 
-  const authinfo = { user, createUser, loginuser, updateall, logout };
+  const authinfo = {
+    crateaccountgoogle,
+    user,
+    createUser,
+    loginuser,
+    updateall,
+    logout,
+  };
   return (
     <div>
       <AuthContext.Provider value={authinfo}>{children}</AuthContext.Provider>

@@ -1,9 +1,12 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Authprovider/Authprovider";
-import login from "../media/undraw_join_re_w1lh.svg";
+import { FaGoogle } from "react-icons/fa";
+import { GoogleAuthProvider } from "firebase/auth";
+
 const Login = () => {
-  const { loginuser } = useContext(AuthContext);
+  const { loginuser, crateaccountgoogle } = useContext(AuthContext);
+  const googleProvider = new GoogleAuthProvider();
   const loginhandle = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -14,6 +17,12 @@ const Login = () => {
       console.log(user);
     });
     console.log(email, password);
+  };
+  const googleaccounthandler = () => {
+    crateaccountgoogle(googleProvider).then((result) => {
+      const user = result.user;
+      console.log(user);
+    });
   };
   return (
     <div>
@@ -57,6 +66,17 @@ const Login = () => {
                     type="submit"
                     value="Login"
                   />
+                </div>
+                <div className="flex flex-col w-full border-opacity-50">
+                  <div className="divider">OR</div>
+                  <div className="grid h-12 card bg-base-300 rounded-box place-items-center">
+                    <button onClick={googleaccounthandler}>
+                      <p className="flex items-center justify-center ">
+                        <p className="mx-2 font-semibold">Google</p>{" "}
+                        <FaGoogle></FaGoogle>
+                      </p>
+                    </button>
+                  </div>
                 </div>
               </div>
             </form>

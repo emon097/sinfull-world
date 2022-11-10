@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Authprovider/Authprovider";
 import Review from "./Review";
 
@@ -52,15 +52,29 @@ const ServiceDetails = () => {
         </p>
       </div>
       <div className="mx-40">
-        <form onSubmit={handlereview}>
-          <input
-            type="text"
-            name="review"
-            placeholder="Type here"
-            className="input bg-slate-400 relative text-white w-1/2"
-          />
-          <button className="btn btn-success text-white"> Review </button>
-        </form>
+        {user?.uid ? (
+          <>
+            <form onSubmit={handlereview}>
+              <input
+                type="text"
+                name="review"
+                placeholder="Write Your Review"
+                className="input  bg-slate-300  text-white w-1/2"
+              />
+              <button className="btn btn-success text-white"> Review </button>
+            </form>
+          </>
+        ) : (
+          <p className="text-2xl">
+            Got To login And Set Review{" "}
+            <Link
+              className="bg-emerald-500 text-white p-2 rounded-lg "
+              to="/login"
+            >
+              Login
+            </Link>
+          </p>
+        )}
       </div>
       <div className="overflow-y-auto mt-20 rounded-lg h-96 mx-40 ">
         {review.map((revie) => (
