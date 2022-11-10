@@ -6,7 +6,7 @@ const MyEmailReview = ({ myrev, handleDelete }) => {
   console.log(myrev);
 
   return (
-    <div className="mt-96">
+    <div>
       <div class="py-12  px-4 md:px-6 2xl:px-0 2xl:container 2xl:mx-auto flex justify-center items-center">
         <div class="flex flex-col justify-start items-start w-full space-y-8">
           <div class="flex justify-start items-start"></div>
