@@ -4,7 +4,7 @@ import Service from "./Service";
 
 const ServicePage = () => {
   const [desplayCategory, setDesplayCategory] = useState([]);
-  fetch("http://localhost:5000/addService")
+  fetch("https://sinfull-world-server.vercel.app/addService")
     .then((res) => res.json())
     .then((data) => setDesplayCategory(data));
 

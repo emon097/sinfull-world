@@ -7,13 +7,13 @@ const Myreview = () => {
   const { user } = useContext(AuthContext);
   const [myReview, setMyReview] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/review?email=${user?.email}`)
+    fetch(`https://sinfull-world-server.vercel.app/review?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => setMyReview(data));
   }, [user?.email]);
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/review/${id}`, {
+    fetch(`https://sinfull-world-server.vercel.app/review/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

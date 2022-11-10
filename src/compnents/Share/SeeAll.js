@@ -3,7 +3,7 @@ import SeeAlllService from "./SeeAlllService";
 
 const SeeAll = () => {
   const [seeAll, setSeeAll] = useState([]);
-  fetch("http://localhost:5000/service")
+  fetch("https://sinfull-world-server.vercel.app/service")
     .then((res) => res.json())
     .then((data) => setSeeAll(data));
 

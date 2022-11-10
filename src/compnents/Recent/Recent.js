@@ -4,7 +4,7 @@ import Shoot from "./Shoot";
 const Recent = () => {
   const [shoot, setShoot] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/extrashoot")
+    fetch("https://sinfull-world-server.vercel.app/extrashoot")
       .then((res) => res.json())
       .then((data) => setShoot(data));
   }, []);

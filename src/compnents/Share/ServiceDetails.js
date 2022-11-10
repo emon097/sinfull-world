@@ -10,7 +10,7 @@ const ServiceDetails = () => {
   const [review, setReview] = useState([]);
   //   review
   useEffect(() => {
-    fetch(`http://localhost:5000/review?services=${_id}`)
+    fetch(`https://sinfull-world-server.vercel.app/review?services=${_id}`)
       .then((res) => res.json())
       .then((data) => {
         setReview(data);
@@ -25,7 +25,7 @@ const ServiceDetails = () => {
     const name = user?.displayName || "unregister";
     const photo = user?.photoURL;
     const reviews = { services: _id, review, email, name, photo, title };
-    fetch("http://localhost:5000/review", {
+    fetch("https://sinfull-world-server.vercel.app/review", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -33,8 +33,9 @@ const ServiceDetails = () => {
       body: JSON.stringify(reviews),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
-    console.log(reviews);
+      .then((data) => {
+        console.log(data);
+      });
   };
   return (
     <div className="my-36">
@@ -59,7 +60,7 @@ const ServiceDetails = () => {
                 type="text"
                 name="review"
                 placeholder="Write Your Review"
-                className="input  bg-slate-300  text-white w-1/2"
+                className="input bg-slate-300  text-black w-1/2"
               />
               <button className="btn btn-success text-white"> Review </button>
             </form>

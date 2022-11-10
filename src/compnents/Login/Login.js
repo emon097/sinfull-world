@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Authprovider/Authprovider";
 import { FaGoogle } from "react-icons/fa";
 import { GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
   const { loginuser, crateaccountgoogle } = useContext(AuthContext);
-  const googleProvider = new GoogleAuthProvider();
+  const location = useLocation();
+  const navigated = useNavigate();
+  const from = location.state?.from?.pathname || "/";
   const loginhandle = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -15,11 +17,12 @@ const Login = () => {
     loginuser(email, password).then((result) => {
       const user = result.user;
       console.log(user);
+      navigated(from, { replace: true });
     });
     console.log(email, password);
   };
   const googleaccounthandler = () => {
-    crateaccountgoogle(googleProvider).then((result) => {
+    crateaccountgoogle().then((result) => {
       const user = result.user;
       console.log(user);
     });

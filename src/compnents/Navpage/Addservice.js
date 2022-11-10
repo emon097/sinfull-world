@@ -12,7 +12,7 @@ const Addservice = () => {
     const details = form.details.value;
 
     const allDetails = { title, image, price, details };
-    fetch("http://localhost:5000/addService", {
+    fetch("https://sinfull-world-server.vercel.app/addService", {
       method: "POST",
       headers: {
         "content-type": "application/json",

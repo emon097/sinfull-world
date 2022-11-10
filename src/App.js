@@ -10,6 +10,7 @@ import Register from "./compnents/Register/Register";
 import Home from "./compnents/Home/Home";
 import SeeAll from "./compnents/Share/SeeAll";
 import ServiceDetails from "./compnents/Share/ServiceDetails";
+import PrivetRoute from "./compnents/PrivetRoute/PrivetRoute";
 
 function App() {
   const router = createBrowserRouter([
@@ -23,7 +24,11 @@ function App() {
         },
         {
           path: "/myreview",
-          element: <Myreview></Myreview>,
+          element: (
+            <PrivetRoute>
+              <Myreview></Myreview>
+            </PrivetRoute>
+          ),
         },
         {
           path: "/blogs",
@@ -31,7 +36,11 @@ function App() {
         },
         {
           path: "/addservice",
-          element: <Addservice></Addservice>,
+          element: (
+            <PrivetRoute>
+              <Addservice></Addservice>
+            </PrivetRoute>
+          ),
         },
         {
           path: "/login",
@@ -48,7 +57,9 @@ function App() {
         {
           path: "/service/:id",
           loader: ({ params }) =>
-            fetch(`http://localhost:5000/service/${params.id}`),
+            fetch(
+              `https://sinfull-world-server.vercel.app/service/${params.id}`
+            ),
           element: <ServiceDetails></ServiceDetails>,
         },
       ],

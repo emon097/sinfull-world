@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
@@ -15,12 +16,13 @@ const auth = getAuth(app);
 const Authprovider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  const googleProvider = new GoogleAuthProvider();
   const createUser = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
-
   const loginuser = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
@@ -35,7 +37,8 @@ const Authprovider = ({ children }) => {
   }, []);
 
   const crateaccountgoogle = () => {
-    return signInWithPopup(auth);
+    setLoading(true);
+    return signInWithPopup(auth, googleProvider);
   };
 
   const updateall = (name, photo) => {
@@ -51,6 +54,7 @@ const Authprovider = ({ children }) => {
   const authinfo = {
     crateaccountgoogle,
     user,
+    loading,
     createUser,
     loginuser,
     updateall,
