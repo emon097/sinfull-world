@@ -1,22 +1,30 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../Authprovider/Authprovider";
 import Review from "./Review";
 
 const ServiceDetails = () => {
+  const { user } = useContext(AuthContext);
   const service = useLoaderData();
   const { details, image, price, title, _id } = service;
   const [review, setReview] = useState([]);
   //   review
-  fetch("http://localhost:5000/review")
-    .then((res) => res.json())
-    .then((data) => setReview(data));
+  useEffect(() => {
+    fetch(`http://localhost:5000/review?services=${_id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setReview(data);
+      });
+  }, [_id]);
   //   review
-
   const handlereview = (event) => {
     event.preventDefault();
     const form = event.target;
     const review = form.review.value;
-    const reviews = { review };
+    const email = user?.email || "unregister";
+    const name = user?.displayName || "unregister";
+    const photo = user?.photoURL;
+    const reviews = { services: _id, review, email, name, photo, title };
     fetch("http://localhost:5000/review", {
       method: "POST",
       headers: {
@@ -56,7 +64,7 @@ const ServiceDetails = () => {
       </div>
       <div>
         {review.map((revie) => (
-          <Review key={revie._id} title={title} revie={revie}></Review>
+          <Review key={revie._id} revie={revie}></Review>
         ))}
       </div>
     </div>
