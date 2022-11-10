@@ -1,5 +1,6 @@
 import { fromJSON } from "postcss";
 import React, { useContext } from "react";
+import toast from "react-hot-toast";
 
 const Addservice = () => {
   const handleaddservice = (event) => {
@@ -21,7 +22,7 @@ const Addservice = () => {
       .then((res) => res.json())
       .then((data) => {
         form.reset();
-        console.log(data);
+        toast.success("successFully Added Service");
       });
   };
   return (

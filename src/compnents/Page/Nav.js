@@ -30,7 +30,7 @@ const Nav = () => {
                 />
               </svg>
             </label>
-            <ul className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+            <ul className="menu menu-compact dropdown-content mt-3 p-2 shadow  rounded-box w-52">
               <li>
                 <Link to="/">Home</Link>
               </li>
@@ -55,14 +55,25 @@ const Nav = () => {
             <li>
               <Link to="/">Home</Link>
             </li>
+            {user?.uid ? (
+              <>
+                <li>
+                  <Link to="/addservice">Add Service</Link>
+                </li>
+                <li>
+                  <Link to="/myreview"> My Review </Link>
+                </li>
+              </>
+            ) : (
+              <ul>
+                <li>
+                  {" "}
+                  <p>Login And You Get Our All Services</p>{" "}
+                </li>
+              </ul>
+            )}
             <li>
-              <Link to="/addservice">Add Service</Link>
-            </li>
-            <li>
-              <Link to="/myreview"> My Review </Link>
-            </li>
-            <li>
-              <Link to="/blogs"> {user?.displayName} </Link>
+              <Link to="/blog">Blog</Link>
             </li>
           </ul>
         </div>
