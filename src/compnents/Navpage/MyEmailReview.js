@@ -68,7 +68,7 @@ const MyEmailReview = ({ myrev, handleDelete }) => {
           </div>
         </div>
       ) : (
-        "dodisfoi"
+        "No found Review"
       )}
     </div>
   );
