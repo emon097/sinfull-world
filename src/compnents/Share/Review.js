@@ -1,25 +1,21 @@
 import React, { useContext } from "react";
-import { AuthContext } from "../../Authprovider/Authprovider";
-
 const Review = ({ revie }) => {
   return (
     <div>
-      <article>
+      <div className=" p-4 my-10 rounded-lg bg-gray-600">
         <div class="flex items-center mb-4 space-x-4">
           <img class="w-10 h-10 rounded-full" src={revie.photo} alt="" />
           <div class="space-y-1 font-medium dark:text-dark">
-            <p>{revie.name} </p>
+            <p className="text-white">{revie.name} </p>
           </div>
         </div>
         <div class="flex items-center mb-1">
-          <h3 class="ml-2 text-sm font-semibold text-gray-900 dark:text-dark">
-            Photography Category {revie.title}
+          <h3 class="ml-2 text-xl font-bold text-white">
+            Category Name : {revie.title ? revie.title : "undefined"}
           </h3>
         </div>
-        <p class="mb-2 font-light text-gray-500 dark:text-gray-400">
-          {revie.review}
-        </p>
-      </article>
+        <p class="mb-2 font-semibold text-white ">{revie.review}</p>
+      </div>
     </div>
   );
 };

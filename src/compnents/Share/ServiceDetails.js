@@ -62,7 +62,7 @@ const ServiceDetails = () => {
           <button className="btn btn-success text-white"> Review </button>
         </form>
       </div>
-      <div>
+      <div className="overflow-y-auto mt-20 rounded-lg h-96 mx-40 ">
         {review.map((revie) => (
           <Review key={revie._id} revie={revie}></Review>
         ))}

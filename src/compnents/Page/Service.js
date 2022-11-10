@@ -1,13 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
 const Service = ({ desplay }) => {
   const { image, title, price, details, _id } = desplay;
   return (
     <div>
       <div class="w-full  bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
         <div href="#">
-          <img className="w-full" src={image} alt="" />
+          <PhotoProvider>
+            <PhotoView src={image}>
+              <img className="w-full" src={image} alt="" />
+            </PhotoView>
+          </PhotoProvider>
         </div>
         <div class="px-5 pb-5">
           <p href="#">

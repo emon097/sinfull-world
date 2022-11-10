@@ -1,9 +1,14 @@
 import React from "react";
-
+import "react-photo-view/dist/react-photo-view.css";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 const Shoot = ({ recent }) => {
   return (
     <div>
-      <img src={recent.img} alt="" />
+      <PhotoProvider>
+        <PhotoView src={recent.img}>
+          <img src={recent.img} alt="" />
+        </PhotoView>
+      </PhotoProvider>
     </div>
   );
 };
