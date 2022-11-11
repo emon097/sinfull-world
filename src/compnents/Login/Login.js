@@ -26,6 +26,7 @@ const Login = () => {
   const googleaccounthandler = () => {
     crateaccountgoogle().then((result) => {
       const user = result.user;
+      navigated(from, { replace: true });
       console.log(user);
     });
   };
