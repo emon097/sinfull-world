@@ -1,9 +1,15 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { FaGoogle } from "react-icons/fa";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Authprovider/Authprovider";
+import useTitle from "../../Hooks/useTitle";
 import login from "../media/undraw_modern_design_re_dlp8.svg";
 const Register = () => {
-  const { createUser, updateall } = useContext(AuthContext);
+  useTitle("Register");
+  const { createUser, updateall, crateaccountgoogle } = useContext(AuthContext);
+  const location = useLocation();
+  const navigated = useNavigate();
+  const from = location.state?.from?.pathname || "/";
   const handlelogin = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -15,6 +21,7 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        navigated(from, { replace: true });
         updateall(name, photo)
           .then(() => {})
           .catch((err) => console.log(err));
@@ -22,6 +29,13 @@ const Register = () => {
       .catch((err) => {
         console.error(err.message);
       });
+  };
+  const googleaccounthandler = () => {
+    crateaccountgoogle().then((result) => {
+      const user = result.user;
+      navigated(from, { replace: true });
+      console.log(user);
+    });
   };
   return (
     <div>
@@ -82,6 +96,17 @@ const Register = () => {
                 </div>
                 <div className="form-control mt-6">
                   <button className="btn btn-primary">Register</button>
+                </div>
+                <div className="flex flex-col w-full border-opacity-50">
+                  <div className="divider">OR</div>
+                  <div className="grid h-12 card bg-base-300 rounded-box place-items-center">
+                    <button onClick={googleaccounthandler}>
+                      <p className="flex items-center justify-center ">
+                        <p className="mx-2 font-semibold">Google</p>{" "}
+                        <FaGoogle></FaGoogle>
+                      </p>
+                    </button>
+                  </div>
                 </div>
               </div>
             </form>

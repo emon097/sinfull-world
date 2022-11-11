@@ -73,7 +73,7 @@ const Nav = () => {
               </ul>
             )}
             <li>
-              <Link to="/blog">Blog</Link>
+              <Link to="/blogs">Blog</Link>
             </li>
           </ul>
         </div>

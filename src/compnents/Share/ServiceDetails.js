@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Authprovider/Authprovider";
+import useTitle from "../../Hooks/useTitle";
 import Review from "./Review";
 
 const ServiceDetails = () => {
+  useTitle("Service Details");
   const { user } = useContext(AuthContext);
   const service = useLoaderData();
   const { details, image, price, title, _id } = service;
@@ -34,6 +36,7 @@ const ServiceDetails = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        form.reset();
         console.log(data);
       });
   };
@@ -60,7 +63,7 @@ const ServiceDetails = () => {
                 type="text"
                 name="review"
                 placeholder="Write Your Review"
-                className="input bg-slate-300  text-black w-1/2"
+                className="input mt-3 text-base leading-normal bg-slate-300 text-black w-full md:w-9/12 xl:w-5/6"
               />
               <button className="btn btn-success text-white"> Review </button>
             </form>

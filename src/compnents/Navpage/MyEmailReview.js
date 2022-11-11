@@ -1,5 +1,7 @@
 import React from "react";
 import toast from "react-hot-toast";
+import { FaRegEdit } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const MyEmailReview = ({ myrev, handleDelete }) => {
   const { name, photo, review, title, _id } = myrev;
@@ -47,7 +49,7 @@ const MyEmailReview = ({ myrev, handleDelete }) => {
         <div>
           <button
             onClick={() => handleDelete(_id)}
-            className="btn mr-10 btn-square btn-error"
+            className="btn text-white mr-10 btn-square btn-error"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -64,6 +66,11 @@ const MyEmailReview = ({ myrev, handleDelete }) => {
               />
             </svg>
           </button>
+          <Link to={`/update/${_id}`}>
+            <button className="btn mr-10 btn-square">
+              <FaRegEdit></FaRegEdit>
+            </button>
+          </Link>
         </div>
       </div>
     </div>

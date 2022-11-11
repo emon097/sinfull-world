@@ -11,6 +11,7 @@ import Home from "./compnents/Home/Home";
 import SeeAll from "./compnents/Share/SeeAll";
 import ServiceDetails from "./compnents/Share/ServiceDetails";
 import PrivetRoute from "./compnents/PrivetRoute/PrivetRoute";
+import UpdateUser from "./compnents/UpdateUser/UpdateUser";
 
 function App() {
   const router = createBrowserRouter([
@@ -53,6 +54,14 @@ function App() {
         {
           path: "/service",
           element: <SeeAll></SeeAll>,
+        },
+        {
+          path: "/update/:id",
+          loader: ({ params }) =>
+            fetch(
+              `https://sinfull-world-server.vercel.app/review/${params.id}`
+            ),
+          element: <UpdateUser></UpdateUser>,
         },
         {
           path: "/service/:id",

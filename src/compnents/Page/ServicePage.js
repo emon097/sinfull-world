@@ -11,14 +11,23 @@ const ServicePage = () => {
   return (
     <div className="mt-36">
       <h1 className="text-center text-5xl mb-6 p-3 text-white rounded bg-slate-600 mx-60">
-        {" "}
-        Our PhotoGraphy Package{" "}
+        Our PhotoGraphy Package
       </h1>
-      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {desplayCategory.map((desplay) => (
-          <Service key={desplay._id} desplay={desplay}></Service>
-        ))}
+
+      <div>
+        {desplayCategory?.length === 0 ? (
+          <div className="my-52 w-full flex justify-center">
+            <progress className="progress "></progress>
+          </div>
+        ) : (
+          <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {desplayCategory.map((desplay) => (
+              <Service key={desplay._id} desplay={desplay}></Service>
+            ))}
+          </div>
+        )}
       </div>
+
       <div className="flex justify-center">
         <Link to="/service" className="btn btn-success text-white">
           SeeAll

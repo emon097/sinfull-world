@@ -1,9 +1,12 @@
 import React from "react";
+import useTitle from "../../Hooks/useTitle";
+import ExtraFeture from "../ExtraFeture/ExtraFeture";
 import Carusel from "../Page/Carusel";
 import ServicePage from "../Page/ServicePage";
 import Recent from "../Recent/Recent";
 
 const Home = () => {
+  useTitle("Home");
   return (
     <div className="mx-20 my-20">
       <div className="grid grid-cols-2">
@@ -27,6 +30,9 @@ const Home = () => {
       </div>
       <div>
         <Recent></Recent>
+      </div>
+      <div>
+        <ExtraFeture></ExtraFeture>
       </div>
     </div>
   );

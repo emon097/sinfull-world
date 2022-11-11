@@ -3,9 +3,11 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Authprovider/Authprovider";
 import { FaGoogle } from "react-icons/fa";
 import { GoogleAuthProvider } from "firebase/auth";
+import useTitle from "../../Hooks/useTitle";
 
 const Login = () => {
   const { loginuser, crateaccountgoogle } = useContext(AuthContext);
+  useTitle("Login");
   const location = useLocation();
   const navigated = useNavigate();
   const from = location.state?.from?.pathname || "/";

@@ -1,8 +1,10 @@
 import { fromJSON } from "postcss";
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
+import useTitle from "../../Hooks/useTitle";
 
 const Addservice = () => {
+  useTitle("Add Service");
   const handleaddservice = (event) => {
     event.preventDefault();
     const form = event.target;
